@@ -5,6 +5,7 @@ const  cors = require("cors");
 const connectDB = require("./config/db");
 const app = express();
 const userRoutes = require("./routes/userRoute")
+const chatRoutes = require("./routes/chatRoute")
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 dotenv.config();
 app.use(express.json())
@@ -13,11 +14,13 @@ app.use(cors());
 app.use(express.json());
 
 
-app.get("/",(req,res)=>{
-    res.send("Api is running")
-})
+// app.get("/",(req,res)=>{
+//     res.send("Api is running")
+// })
 
-app.use('/api/user',userRoutes)
+app.use("/api/user",userRoutes);
+app.use("/api/chat",chatRoutes);
+
 app.use(notFound);
 app.use(errorHandler);
 
