@@ -3,7 +3,7 @@ const User = require("../models/userModels")
 const generateToken = require("../config/generateToken")
 
 const registerUser = async(req,res)=>{
-    const {name,email,password,pic} = req.body;
+  const {name,email,password,pic} = req.body;
   console.log("user created")
     if (!name || !email || !password) {
         res.status(400);
@@ -61,6 +61,7 @@ const authUser = asyncHandler(async (req, res) => {
 
 
 const allUsers = asyncHandler(async (req, res) => {
+  console.log(req.query.search)
   const keyword = req.query.search
     ? {
         $or: [
